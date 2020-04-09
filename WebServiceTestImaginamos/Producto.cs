@@ -21,9 +21,9 @@ namespace WebServiceTestImaginamos
         }
     
         public long Id { get; set; }
-        public string Producto1 { get; set; }
         public decimal Precio { get; set; }
         public int Cantidad { get; set; }
+        public string NombreProducto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaccion> Transaccions { get; set; }

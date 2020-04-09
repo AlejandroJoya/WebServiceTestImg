@@ -24,8 +24,8 @@ namespace WebServiceTestImaginamos
         public string Nombre { get; set; }
         public string Documento { get; set; }
         public string Email { get; set; }
-        public string Usuario1 { get; set; }
         public string Contrasena { get; set; }
+        public string NombreUsuario { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Transaccion> Transaccions { get; set; }

@@ -17,6 +17,8 @@ namespace WebServiceTestImaginamos
         public long Id { get; set; }
         public long IdUsuario { get; set; }
         public long IdProducto { get; set; }
+        public System.DateTime Fecha { get; set; }
+        public string Estado { get; set; }
     
         public virtual Producto Producto { get; set; }
         public virtual Usuario Usuario { get; set; }
