@@ -141,5 +141,27 @@ namespace WebServiceTestImaginamos
                 throw;
             }
         }
+
+        [WebMethod]
+        public ProductoEntity ConsultarProducto(long id)
+        {
+            try
+            {
+                var producto = context.Productoes.Find(id);
+                var productoEntidad = new ProductoEntity
+                {
+                    Id = producto.Id,
+                    NombreProducto = producto.NombreProducto,
+                    Precio = producto.Precio,
+                    Cantidad = producto.Cantidad
+                };
+
+                return productoEntidad;
+            }
+            catch (Exception ex)
+            {                
+                throw;
+            }
+        }
     }
 }
