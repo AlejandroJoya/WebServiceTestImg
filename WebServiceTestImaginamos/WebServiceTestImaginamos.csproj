@@ -94,6 +94,7 @@
   <ItemGroup>
     <Compile Include="Entities\ProductoEntity.cs" />
     <Compile Include="Entities\TransaccionEntity.cs" />
+    <Compile Include="Entities\UsuarioEntity.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="MainWebService.asmx.cs">
       <DependentUpon>MainWebService.asmx</DependentUpon>

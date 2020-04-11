@@ -1,5 +1,4 @@
-﻿using FastMember;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
@@ -21,12 +20,15 @@ namespace WebServiceTestImaginamos
         private TestImaginamosEntities context = new TestImaginamosEntities();
 
         [WebMethod]
-        public bool Login(string usuario, string contrasena)
+        public UsuarioEntity Login(string nombreUsuario, string contrasena)
         {
             try
             {
-                bool existeUsuario = context.Usuarios.Any(m => m.NombreUsuario.Equals(usuario) && m.Contrasena.Equals(contrasena));
-                return existeUsuario;
+                Usuario usuario = context.Usuarios.FirstOrDefault(m => m.NombreUsuario.ToUpper().Equals(nombreUsuario.ToUpper()) 
+                && m.Contrasena.Equals(contrasena));
+
+                var usuarioEntidad = new UsuarioEntity(usuario);
+                return usuarioEntidad;
             }
             catch (Exception ex)
             {
