@@ -159,7 +159,52 @@ namespace WebServiceTestImaginamos
                 return productoEntidad;
             }
             catch (Exception ex)
-            {                
+            {
+                throw;
+            }
+        }
+
+        [WebMethod]
+        public List<TransaccionEntity> ListarCarrito(long idUsuario)
+        {
+            try
+            {
+                string estadoNuevo = EstadoTransaccion.NUEVO.ToString();
+
+                var listaCarrito = (from transaccion in context.Transaccions
+                                    orderby transaccion.Id
+                                    where transaccion.IdUsuario == idUsuario && transaccion.Estado.ToUpper().Equals(estadoNuevo)
+                                    select new
+                                    {
+                                        transaccion.Id,
+                                        transaccion.IdUsuario,
+                                        transaccion.IdProducto,
+                                        transaccion.Fecha,
+                                        transaccion.Estado,
+                                        transaccion.Producto.NombreProducto
+                                    }
+                                      )
+                                    .ToList();
+
+                var listaRetorno = new List<TransaccionEntity>();
+
+                foreach (var item in listaCarrito)
+                {
+                    listaRetorno.Add(new TransaccionEntity
+                    {
+                        Id = item.Id,
+                        IdUsuario = item.IdUsuario,
+                        IdProducto = item.IdProducto,
+                        Fecha = item.Fecha,
+                        Estado = item.Estado,
+                        NombreProducto = item.NombreProducto
+                    });
+                }
+
+                return listaRetorno;
+            }
+            catch (Exception ex)
+            {
                 throw;
             }
         }
